@@ -8,7 +8,7 @@ from typing import Optional
 from typing import Tuple
 
 from wcwidth import wcswidth
-from xkits_file.safefile import SafeFile
+from xkits_file.safefile import SafeKits
 import xlrd
 import xlwt
 
@@ -21,7 +21,7 @@ class Reader():
 
     def __init__(self, filename: str):
         self.__file: str = filename
-        SafeFile.restore(path=filename)
+        SafeKits.restore(path=filename)
         self.__book: xlrd.Book = xlrd.open_workbook(filename)
 
     @property
@@ -65,9 +65,9 @@ class Writer():
             dirname: str = os.path.dirname(abspath)
             if not os.path.exists(dirname):
                 os.makedirs(dirname)
-            SafeFile.create_backup(path=abspath, copy=True)
+            SafeKits.create_backup(path=abspath, copy=True)
             self.book.save(abspath)
-            SafeFile.delete_backup(path=abspath)
+            SafeKits.delete_backup(path=abspath)
             return True
         except Exception:  # pragma: no cover, pylint: disable=broad-except
             # f"failed to write file {abspath}"

@@ -6,7 +6,7 @@ from csv import reader as csv_reader
 from csv import writer as csv_writer
 from typing import Any
 
-from xkits_file.safefile import SafeFile
+from xkits_file.safefile import SafeKits
 
 from xkits_sheet.table import Form
 from xkits_sheet.table import parse_table_name
@@ -20,8 +20,8 @@ class CSV():
              ) -> Form[str, str]:
         """Read .csv file
         """
-        with SafeFile.lock(filename):
-            SafeFile.restore(path=filename)
+        with SafeKits.lock(filename):
+            SafeKits.restore(path=filename)
             table: Form[str, str] = Form(name=parse_table_name(filename))
             with open(filename, "r", encoding="utf-8") as rhdl:
                 if include_header:
@@ -41,8 +41,8 @@ class CSV():
     def dump(cls, filename: str, table: Form[Any, Any]) -> None:
         """Write .csv file
         """
-        with SafeFile.lock(filename):
-            SafeFile.create_backup(path=filename, copy=True)
+        with SafeKits.lock(filename):
+            SafeKits.create_backup(path=filename, copy=True)
             with open(filename, "w", encoding="utf-8") as whdl:
                 if len(table.header) > 0:
                     writer = csv_dist_writer(whdl, fieldnames=table.header)
@@ -51,4 +51,4 @@ class CSV():
                 else:
                     writer = csv_writer(whdl)
                     writer.writerows(table.dump())
-            SafeFile.delete_backup(path=filename)
+            SafeKits.delete_backup(path=filename)

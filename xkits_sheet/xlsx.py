@@ -6,7 +6,7 @@ from typing import Optional
 from typing import Tuple
 
 import openpyxl
-from xkits_file.safefile import SafeFile
+from xkits_file.safefile import SafeKits
 
 from xkits_sheet.table import Form
 
@@ -17,7 +17,7 @@ class XLSX():
 
     def __init__(self, filename: str, read_only: bool = True):
         self.__file: str = filename
-        SafeFile.restore(path=filename)
+        SafeKits.restore(path=filename)
         self.__book: openpyxl.Workbook = openpyxl.load_workbook(
             filename=filename, read_only=read_only)
 
