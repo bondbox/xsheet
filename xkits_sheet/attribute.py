@@ -1,10 +1,11 @@
 # coding:utf-8
 
-__project__ = "xkits-sheet"
-__version__ = "0.2"
-__urlhome__ = "https://github.com/bondbox/xsheet/"
-__description__ = "Form module"
+# project info
+__project_name__ = "xsheet"
+__project_home__ = "https://github.com/bondbox/xsheet/"
+__project_desc__ = "Form module"
 
-# author
-__author__ = "Mingzhe Zou"
-__author_email__ = "zoumingzhe@outlook.com"
+# package info
+__version__ = "0.2"
+__package_name__ = "xkits-sheet"
+__package_desc__ = "Form module"

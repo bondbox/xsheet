@@ -1,0 +1,42 @@
+name = "xsheet"
+home = "https://github.com/bondbox/xsheet/"
+description = "Form module"
+keywords = []
+version = "0.2"
+
+[authors.zoumingzhe]
+name = "Mingzhe Zou"
+email = "zoumingzhe@outlook.com"
+
+[packages.xkits-sheet]
+requires_python = ">=3.8"
+authors = [
+    "zoumingzhe",
+]
+keywords = []
+requirements = [
+    "xkits-file>=0.10",
+    "openpyxl",
+    "tabulate",
+    "wcwidth",
+    "xlrd",
+    "xlwt",
+]
+build_backend = "hatchling"
+max_complexity = 10
+max_line_length = 127
+
+[packages.xkits-sheet.modules.xkits_sheet]
+base = "xkits_sheet"
+exclude = [
+    "unittest",
+]
+omitted = [
+    "attribute.py",
+    "unittest/*",
+]
+
+[packages.xkits-sheet.modules.xkits_sheet.scripts]
+
+[packages.xkits-sheet.modules.xkits_sheet.templates]
+"attribute.py" = true
