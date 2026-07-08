@@ -1,4 +1,4 @@
-xkits-file>=0.7
+xkits-file>=0.10
 openpyxl
 tabulate
 wcwidth
